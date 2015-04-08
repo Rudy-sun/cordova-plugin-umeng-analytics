@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  id="com.qiudao.cordova.umeng-analytics"
+  version="0.0.1">
+    <name>Umeng Analytics</name>
+    <description>Umeng Analytics Cordova plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,umeng,analytics</keywords>
+    <author>baomingba</author>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="UmengAnalytics">
+                <param name="ios-package" value="UmengAnalytics"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/MobClick.h" />
+        <header-file src="src/ios/MobClickSocialAnalytics.h" />
+        <source-file src="src/ios/libMobClickLibrary.a" framework="true" />
+        <framework src="libz.dylib" weak="true" />
+    </platform>
+    
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="UmengAnalytics">
+                <param name="android-package" value="com.qiudao.cordova.UmengAnalytics"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/umeng-analytics-v5.4.2.jar" target-dir="libs" />
+    </platform>
+
+</plugin>
