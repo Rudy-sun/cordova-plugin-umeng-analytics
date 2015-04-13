@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-  id="com.qiudao.cordova.umeng-analytics"
-  version="0.0.1">
+<plugin xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.qiudao.cordova.umeng-analytics" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>Umeng Analytics</name>
     <description>Umeng Analytics Cordova plugin</description>
     <license>Apache 2.0</license>
@@ -9,24 +9,36 @@
     <author>baomingba</author>
 
     <platform name="ios">
-        <config-file target="config.xml" parent="/*">
+        <config-file parent="/*" target="config.xml">
             <feature name="UmengAnalytics">
-                <param name="ios-package" value="UmengAnalytics"/>
+                <param name="ios-package" value="UmengAnalytics" />
             </feature>
         </config-file>
         <header-file src="src/ios/MobClick.h" />
         <header-file src="src/ios/MobClickSocialAnalytics.h" />
-        <source-file src="src/ios/libMobClickLibrary.a" framework="true" />
+        <source-file framework="true" src="src/ios/libMobClickLibrary.a" />
         <framework src="libz.dylib" weak="true" />
     </platform>
-    
+
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file parent="/*" target="res/xml/config.xml">
             <feature name="UmengAnalytics">
-                <param name="android-package" value="com.qiudao.cordova.UmengAnalytics"/>
+                <param name="android-package" value="com.qiudao.cordova.UmengAnalytics" />
             </feature>
         </config-file>
         <source-file src="src/android/umeng-analytics-v5.4.2.jar" target-dir="libs" />
+
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+        </config-file>
+
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <meta-data android:value="YOUR_UMENG_APP_KEY" android:name="UMENG_APPKEY"/>
+            <meta-data android:value="Others" android:name="UMENG_CHANNEL"/>
+        </config-file>
     </platform>
 
 </plugin>

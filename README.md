@@ -2,17 +2,17 @@
 
 ### About plugin
 
-** Add plugin **
+**Add plugin**
 
     cordova plugin add https://github.com/baomingba/cordova-plugin-umeng-analytics.git
 
-** Remove plugin **
+**Remove plugin**
 
     cordova plugin remove https://github.com/baomingba/cordova-plugin-umeng-analytics.git
 
 ### iOS
 
-** Basic usage in iOS, add following codes to your \*AppDelegate.m **
+**Basic usage in iOS, add following codes to your \*AppDelegate.m**
 
     - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     {
