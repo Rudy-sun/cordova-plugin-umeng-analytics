@@ -14,19 +14,22 @@
                 <param name="ios-package" value="UmengAnalytics" />
             </feature>
         </config-file>
-        <header-file src="src/ios/MobClick.h" />
-        <header-file src="src/ios/MobClickSocialAnalytics.h" />
-        <source-file framework="true" src="src/ios/libMobClickLibrary.a" />
+
+        <header-file src="src/ios/libs/MobClick.h" />
+        <header-file src="src/ios/libs/MobClickSocialAnalytics.h" />
+        <source-file src="src/ios/libs/libMobClickLibrary.a" framework="true" />
+
         <framework src="libz.dylib" weak="true" />
     </platform>
 
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="UmengAnalytics">
-                <param name="android-package" value="com.qiudao.cordova.UmengAnalytics" />
+                <param name="android-package" value="com.qiudao.cordova.umeng.UmengAnalytics" />
             </feature>
         </config-file>
-        <source-file src="src/android/umeng-analytics-v5.4.2.jar" target-dir="libs" />
+
+        <source-file src="src/android/libs/umeng-analytics-v5.4.2.jar" target-dir="libs" />
 
         <config-file parent="/manifest" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
@@ -37,7 +40,7 @@
 
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
             <meta-data android:value="YOUR_UMENG_APP_KEY" android:name="UMENG_APPKEY"/>
-            <meta-data android:value="Others" android:name="UMENG_CHANNEL"/>
+            <meta-data android:value="Test" android:name="UMENG_CHANNEL"/>
         </config-file>
     </platform>
 
