@@ -4,8 +4,9 @@ A Cordova plugin for Umeng Analytics (友盟统计) SDK.
 
 ## 1. 插件功能
 
-1. 支持友盟统计的基本功能，通过插件机制方便安装。
-2. TODO
+1. 实现使用Cordova插件方式自动加入友盟统计功能；
+2. 支持友盟的基本统计功能；
+3. TODO
 
 ## 2. 插件使用
 
@@ -19,7 +20,7 @@ A Cordova plugin for Umeng Analytics (友盟统计) SDK.
 
 ### iOS平台
 
-在`config.xml`中添加`preference` `UmengIOSAppId`即可实现基本统计功能。`UmengIOSAppId`是友盟平台创建的iOS应用的id。
+在`config.xml`中添加`preference` `UmengIOSAppId`即可实现基本统计功能。`UmengIOSAppId`是友盟平台创建的iOS应用id。
 
         <preference name="UmengIOSAppId" value="123456789012345678901234" />
         
@@ -29,11 +30,13 @@ A Cordova plugin for Umeng Analytics (友盟统计) SDK.
 
 需要修改生成的Android Project部分代码来实现基本统计功能。
 
-1. 修改`AndroidMainifest.xml`中的`meta-data` `UMENG_APPKEY`，把`YOUR_UMENG_APP_KEY`替换为友盟平台创建的Android应用的id。
+1. 修改`AndroidMainifest.xml`中的`meta-data` `UMENG_APPKEY`，把`YOUR_UMENG_APP_KEY`替换为友盟平台创建的Android应用id。
 
         <meta-data android:name="UMENG_APPKEY" android:value="123456789012345678900987" />
 
 2. 需要额外在每个需要统计的Acitivity中加入：
+
+        import com.umeng.analytics.MobclickAgent;
 
         @Override
         public void onResume() {
@@ -49,3 +52,7 @@ A Cordova plugin for Umeng Analytics (友盟统计) SDK.
 
 更多高级统计功能参考[Umeng Android Doc](http://dev.umeng.com/analytics/android-doc)，需要在应用代码中调用相关友盟接口。  
 
+## 3. 友盟统计版本
+目前插件包含的友盟统计版本为当前（2015-4-22）最新版，其中iOS版本为No-IDFA 3.4.7，Android版本为5.4.2。
+
+如果需要更换版本，只要替换src/ios/libs和src/android/libs下的文件即可。
