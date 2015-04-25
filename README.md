@@ -12,29 +12,27 @@ A Cordova plugin for Umeng Analytics (友盟统计) SDK.
 
 **安装插件**
 
-    cordova plugin add https://github.com/baomingba/cordova-plugin-umeng-analytics.git
+    cordova plugin add https://github.com/baomingba/cordova-plugin-umeng-analytics.git --variable UMENG_IOS_ID="123456789012345678901234" --variable UMENG_ANDROID_ID="123456789012345678900987"
+    
+其中：
+
+- `UMENG_IOS_ID`的值替换为友盟平台创建的iOS应用id，该值将保存在`Staging/config.xml`中；
+
+- `UMENG_ANDROID_ID`的值替换为友盟平台创建的Android应用id，该值将保存在`res/values/umeng.xml`中。
 
 **移除插件**
 
     cordova plugin remove com.qiudao.cordova.umeng-analytics
 
 ### iOS平台
+      
+安装插件即支持基本统计功能。
 
-在`config.xml`中添加`preference` `UmengIOSAppId`即可实现基本统计功能。`UmengIOSAppId`是友盟平台创建的iOS应用id。
-
-        <preference name="UmengIOSAppId" value="123456789012345678901234" />
-        
 更多高级统计功能参考[Umeng iOS Doc](http://dev.umeng.com/analytics/ios-doc)，需要在应用代码中调用相关友盟接口。  
       
 ### Android平台
 
-需要修改生成的Android Project部分代码来实现基本统计功能。
-
-1. 修改`AndroidMainifest.xml`中的`meta-data` `UMENG_APPKEY`，把`YOUR_UMENG_APP_KEY`替换为友盟平台创建的Android应用id。
-
-        <meta-data android:name="UMENG_APPKEY" android:value="123456789012345678900987" />
-
-2. 需要额外在每个需要统计的Acitivity中加入：
+需要修改生成的Android Project部分代码来实现基本统计功能。在每个需要统计的Acitivity中加入：
 
         import com.umeng.analytics.MobclickAgent;
 

@@ -8,11 +8,16 @@
     <keywords>cordova,umeng,analytics</keywords>
     <author>baomingba</author>
 
+    <preference name="UMENG_IOS_ID" value="YOUR_UMENG_IOS_APP_ID" />
+    <preference name="UMENG_ANDROID_ID" value="YOUR_UMENG_ANDROID_APP_ID" />
+
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
             <feature name="UmengAnalytics">
                 <param name="ios-package" value="UmengAnalytics" />
+                <param name="onload" value="true" />
             </feature>
+            <preference name="UmengIOSAppId" value="$UMENG_IOS_ID" />
         </config-file>
 
         <header-file src="src/ios/AppDelegate+UmengAnalytics.h" />
@@ -41,9 +46,14 @@
             <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
         </config-file>
 
+        <source-file src="src/android/umeng.xml" target-dir="res/values" />
+        <config-file target="res/values/umeng.xml" parent="/*">
+            <string name="umeng_android_id">$UMENG_ANDROID_ID</string>
+        </config-file>
+
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
-            <meta-data android:value="YOUR_UMENG_APP_KEY" android:name="UMENG_APPKEY"/>
-            <meta-data android:value="Test" android:name="UMENG_CHANNEL"/>
+            <meta-data android:value="@string/umeng_android_id" android:name="UMENG_APPKEY"/>
+            <meta-data android:value="Android" android:name="UMENG_CHANNEL"/>
         </config-file>
     </platform>
 
